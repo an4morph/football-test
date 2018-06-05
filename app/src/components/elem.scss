@@ -1,0 +1,25 @@
+.playoff-table {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.stage {
+    display: flex;
+    flex-direction: column;
+
+    .pair {
+        width: 200px;
+        height: 80px;
+        border: 1px solid #000;
+
+        .command {
+            display: flex;
+
+            .command-score {
+                margin-left: 15px;
+            }
+        }
+    }
+}

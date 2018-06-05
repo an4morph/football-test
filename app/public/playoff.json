@@ -1,0 +1,53 @@
+[
+    {
+       "id": 1,
+       "order": 2,
+       "stage": 3,
+       "commands": [
+           {
+               "id": 1,
+               "name": "Spain",
+               "score": 2
+           },
+           {
+               "id": 2,
+               "name": "Italy",
+               "score": 1
+            }
+       ]
+    },
+    {
+        "id": 2,
+        "order": 1,
+        "stage": 3,
+        "commands": [
+            {
+                "id": 1,
+                "name": "Russia",
+                "score": 1
+            },
+            {
+                "id": 2,
+                "name": "Korea",
+                "score": 0
+             }
+        ]
+     },
+     {
+        "id": 3,
+        "order": 3,
+        "stage": 3,
+        "commands": [
+            {
+                "id": 1,
+                "name": "Argentina",
+                "score": 0
+            },
+            {
+                "id": 2,
+                "name": "Brazil",
+                "score": 3
+             }
+        ]
+     }
+]
