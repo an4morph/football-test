@@ -1,7 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Paper from '@material-ui/core/Paper'
 import Pair from './Pair'
 import Game from './Game'
+import { Typography } from '@material-ui/core'
+
+const stageNames = [
+  'Final', 'Semifinal', '1/4', '1/8', '1/16', '1/32',
+]
 
 class Stage extends React.Component {
   constructor(props) {
@@ -23,7 +29,11 @@ class Stage extends React.Component {
 
     return (
       <div className="stage">
-        {`stage${stage}`}
+        <Paper className="stage-paper">
+          <Typography>
+            {stageNames[stage - 1]}
+          </Typography>
+        </Paper>
         {
           pairCount >= 1 && this.createCounter(1, pairCount).map(pair => (
             <Pair

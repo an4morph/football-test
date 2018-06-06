@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Typography } from '@material-ui/core'
 import PlayoffTable from './PlayoffTable/'
 import './index.scss'
+
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -20,10 +22,10 @@ class HomePage extends React.Component {
 
     return (
       <div className="main">
-        <h1>Home page</h1>
+        <Typography className="main-title">Football play-off table</Typography>
         <PlayoffTable
           games={games}
-          stagesCount={3}
+          stagesCount={4}
         />
       </div>
     )

@@ -22,12 +22,12 @@
         "stage": 3,
         "commands": [
             {
-                "id": 1,
+                "id": 3,
                 "name": "Russia",
                 "score": 1
             },
             {
-                "id": 2,
+                "id": 4,
                 "name": "Korea",
                 "score": 0
              }
@@ -39,12 +39,12 @@
         "stage": 3,
         "commands": [
             {
-                "id": 1,
+                "id": 5,
                 "name": "Argentina",
                 "score": 0
             },
             {
-                "id": 2,
+                "id": 6,
                 "name": "Brazil",
                 "score": 3
              }
@@ -56,14 +56,150 @@
         "stage": 2,
         "commands": [
             {
-                "id": 1,
+                "id": 3,
                 "name": "Russia",
                 "score": 0
             },
             {
-                "id": 2,
+                "id": 1,
                 "name": "Spain",
                 "score": 3
+             }
+        ]
+     },
+     {
+        "id": 5,
+        "order": 1,
+        "stage": 4,
+        "commands": [
+            {
+                "id": 7,
+                "name": "France",
+                "score": 0
+            },
+            {
+                "id": 3,
+                "name": "Russia",
+                "score": 3
+             }
+        ]
+     },
+     {
+        "id": 6,
+        "order": 2,
+        "stage": 4,
+        "commands": [
+            {
+                "id": 4,
+                "name": "Korea",
+                "score": 5
+            },
+            {
+                "id": 8,
+                "name": "Germany",
+                "score": 3
+             }
+        ]
+     },
+     {
+        "id": 7,
+        "order": 3,
+        "stage": 4,
+        "commands": [
+            {
+                "id": 9,
+                "name": "Croatia",
+                "score": 0
+            },
+            {
+                "id": 1,
+                "name": "Spain",
+                "score": 2
+             }
+        ]
+     },
+     {
+        "id": 8,
+        "order": 4,
+        "stage": 4,
+        "commands": [
+            {
+                "id": 2,
+                "name": "Italy",
+                "score": 4
+            },
+            {
+                "id": 10,
+                "name": "Monako",
+                "score": 2
+             }
+        ]
+     },
+     {
+        "id": 9,
+        "order": 5,
+        "stage": 4,
+        "commands": [
+            {
+                "id": 11,
+                "name": "Jamaica",
+                "score": 0
+            },
+            {
+                "id": 5,
+                "name": "Argentina",
+                "score": 5
+             }
+        ]
+     },
+     {
+        "id": 10,
+        "order": 6,
+        "stage": 4,
+        "commands": [
+            {
+                "id": 12,
+                "name": "UK",
+                "score": 1
+            },
+            {
+                "id": 6,
+                "name": "Brazil",
+                "score": 2
+             }
+        ]
+     },
+     {
+        "id": 11,
+        "order": 7,
+        "stage": 4,
+        "commands": [
+            {
+                "id": 13,
+                "name": "Romania",
+                "score": 1
+            },
+            {
+                "id": 14,
+                "name": "Poland",
+                "score": 3
+             }
+        ]
+     },
+     {
+        "id": 12,
+        "order": 8,
+        "stage": 4,
+        "commands": [
+            {
+                "id": 15,
+                "name": "USA",
+                "score": 0
+            },
+            {
+                "id": 16,
+                "name": "Greece",
+                "score": 2
              }
         ]
      }
