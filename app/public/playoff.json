@@ -49,5 +49,22 @@
                 "score": 3
              }
         ]
+     },
+     {
+        "id": 4,
+        "order": 1,
+        "stage": 2,
+        "commands": [
+            {
+                "id": 1,
+                "name": "Russia",
+                "score": 0
+            },
+            {
+                "id": 2,
+                "name": "Spain",
+                "score": 3
+             }
+        ]
      }
 ]

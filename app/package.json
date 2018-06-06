@@ -49,6 +49,8 @@
     "output": "./reports/junit.xml"
   },
   "dependencies": {
+    "@material-ui/core": "^1.2.0",
+    "@material-ui/icons": "^1.1.0",
     "autoprefixer": "7.1.2",
     "axios": "^0.18.0",
     "babel-core": "6.25.0",

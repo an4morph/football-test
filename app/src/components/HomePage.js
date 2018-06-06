@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PlayoffTable from './PlayoffTable'
-import './elem.scss'
+import PlayoffTable from './PlayoffTable/'
+import './index.scss'
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -21,7 +21,10 @@ class HomePage extends React.Component {
     return (
       <div className="main">
         <h1>Home page</h1>
-        <PlayoffTable games={games} stagesCount={3} />
+        <PlayoffTable
+          games={games}
+          stagesCount={3}
+        />
       </div>
     )
   }

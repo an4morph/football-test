@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Typography from '@material-ui/core/Typography'
 
-class CommandElement extends React.Component {
+class Command extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -17,15 +18,15 @@ class CommandElement extends React.Component {
 
   tryGuess = () => {
     const {
-      games, type, stage, order,
+      games, index, stage, order,
     } = this.props
-    const firstPrevGame = games.find(g => g.stage === stage + 2 && g.order === ((order + 1) * 2) - 1)
-    const secondPrevGame = games.find(g => g.stage === stage + 2 && g.order === (order + 1) * 2)
+    const firstPrevGame = games.find(g => g.stage === stage + 1 && g.order === ((order) * 2) - 1)
+    const secondPrevGame = games.find(g => g.stage === stage + 1 && g.order === (order) * 2)
 
-    if (type === 'first' && firstPrevGame) {
+    if (index === 0 && firstPrevGame) {
       return this.findWinner(firstPrevGame)
     }
-    if (type === 'second' && secondPrevGame) {
+    if (index === 1 && secondPrevGame) {
       return this.findWinner(secondPrevGame)
     }
     return null
@@ -37,8 +38,9 @@ class CommandElement extends React.Component {
     </div>
   )
 
-  renderCommand = (game) => {
-    const index = this.props.type === 'first' ? 0 : 1
+  renderCommandName = (game) => {
+    const { index } = this.props
+
     if (game) return this.generateCommandNameBlock(game.commands[index].name)
     if (this.tryGuess()) return this.generateCommandNameBlock(this.tryGuess(), 'guessing')
     return this.generateCommandNameBlock('', 'empty')
@@ -46,21 +48,24 @@ class CommandElement extends React.Component {
 
   render() {
     const {
-      type, game, stage, order,
+      index, games, stage, order,
     } = this.props
-    const index = type === 'first' ? 0 : 1
+    const game = games.find(g => (g.order === order) && (g.stage === stage))
 
     return (
-      <div className={`command ${type}`}>
-        {this.renderCommand(game)}
+      <Typography className={`command ${index ? 'second' : 'first'}`} component="div">
+        {this.renderCommandName(game)}
         {game && <div className="command-score">{game.commands[index].score}</div> }
-      </div>
+      </Typography>
     )
   }
 }
 
-CommandElement.propTypes = {
-  type: PropTypes.string.isRequired,
+Command.propTypes = {
+  index: PropTypes.number.isRequired,
+  games: PropTypes.arrayOf(PropTypes.object),
+  stage: PropTypes.number.isRequired,
+  order: PropTypes.number.isRequired,
 }
 
-export default CommandElement
+export default Command
