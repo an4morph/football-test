@@ -3,6 +3,7 @@
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
+    font-size: 16px;
 }
 
 .stage {
@@ -10,15 +11,39 @@
     flex-direction: column;
 
     .pair {
-        width: 200px;
-        height: 80px;
         border: 1px solid #000;
+        min-width: 140px;
+        max-width: 250px;
 
         .command {
             display: flex;
+            text-overflow: clip;
 
+            &.first {
+                background-color: #c5ecff;
+            }
+            &.second {
+                background-color: #bbd2db;
+            }
+            .empty {
+                padding: 5px;
+                min-height: 18px;
+            }
+            .guessing {
+                color: #666;
+            }
+
+            .command-name {
+                padding: 5px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                flex: 1;
+            }
             .command-score {
+                padding: 5px;
                 margin-left: 15px;
+                background-color: #f6ffd9;
             }
         }
     }

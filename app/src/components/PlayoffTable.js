@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import CommandElement from './CommandElement'
 
 
 class PlayoffTable extends React.Component {
@@ -7,8 +8,6 @@ class PlayoffTable extends React.Component {
     super(props)
     this.state = {}
   }
-
-  getPartGames = part => this.props.games.filter(game => game.part === part)
 
   createCounter = (count) => {
     const counter = []
@@ -18,25 +17,6 @@ class PlayoffTable extends React.Component {
     return counter
   }
 
-  tryToGuessWho = (stage, order, commandOrder) => {
-    const { games } = this.props
-
-    const firstGame = games.find(g => g.stage === stage + 2 && g.order === (order + 1) * 2)
-    const secondGame = games.find(g => g.stage === stage + 2 && g.order === ((order + 1) * 2) - 1)
-
-    const findWinner = (game) => {
-      if (game) {
-        if (game.commands[0].score > game.commands[1].score) { return game.commands[0].name }
-        return game.commands[1].name
-      }
-      return null
-    }
-
-    if (commandOrder === 'first' && firstGame) return findWinner(firstGame)
-    if (commandOrder === 'second' && firstGame) return findWinner(secondGame)
-
-    return 'nun'
-  }
 
   render() {
     const { games, stagesCount } = this.props
@@ -50,22 +30,20 @@ class PlayoffTable extends React.Component {
                 const gameItem = games.find(g => (g.order === order + 1) && (g.stage === stage + 1))
                 return (
                   <div className="pair" key={order}>
-                    <div className="command first-command">
-                      <div className="command-name">
-                        {gameItem ? gameItem.commands[0].name : this.tryToGuessWho(stage, order, 'first')}
-                      </div>
-                      <div className="command-score">
-                        {gameItem ? gameItem.commands[0].score : 'unknown'}
-                      </div>
-                    </div>
-                    <div className="command second-command">
-                      <div className="command-name">
-                        {gameItem ? gameItem.commands[1].name : this.tryToGuessWho(stage, order, 'second')}
-                      </div>
-                      <div className="command-score">
-                        {gameItem ? gameItem.commands[1].score : 'unknown'}
-                      </div>
-                    </div>
+                    <CommandElement
+                      type="first"
+                      game={gameItem}
+                      games={games}
+                      stage={stage}
+                      order={order}
+                    />
+                    <CommandElement
+                      type="second"
+                      game={gameItem}
+                      games={games}
+                      stage={stage}
+                      order={order}
+                    />
                   </div>
                 )
               })}
