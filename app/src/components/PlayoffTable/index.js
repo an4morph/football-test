@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { CircularProgress } from '@material-ui/core'
 import Stage from './Stage'
 import Pair from './Pair'
 import Game from './Game'
@@ -28,6 +29,8 @@ class PlayoffTable extends React.Component {
   render() {
     const {
       games, stagesCount, getPlayers, players,
+      gamesAreLoading, gamesAreFailed,
+      playersAreLoading, playersAreFailed,
     } = this.props
 
     return (
@@ -47,11 +50,21 @@ class PlayoffTable extends React.Component {
                   stage={stage}
                   getPlayers={getPlayers}
                   players={players}
+                  playersAreLoading={playersAreLoading}
+                  playersAreFailed={playersAreFailed}
                 />
               </Pair>
             </Stage>
           ))
         }
+        {gamesAreLoading &&
+        <div className="overlay">
+          <CircularProgress size={50} />
+        </div>}
+        {gamesAreFailed &&
+        <div className="overlay failed">
+          Failed to load.
+        </div>}
       </div>
     )
   }
@@ -63,6 +76,10 @@ PlayoffTable.propTypes = {
   stagesCount: PropTypes.number.isRequired,
   getPlayers: PropTypes.func.isRequired,
   getGames: PropTypes.func.isRequired,
+  gamesAreLoading: PropTypes.bool.isRequired,
+  gamesAreFailed: PropTypes.bool.isRequired,
+  playersAreLoading: PropTypes.bool.isRequired,
+  playersAreFailed: PropTypes.bool.isRequired,
 }
 
 export default PlayoffTable

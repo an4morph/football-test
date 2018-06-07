@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export const createCounter = (from, to) => {
   const counter = []
   for (let i = from; i <= to; i += 1) {
@@ -5,5 +7,3 @@ export const createCounter = (from, to) => {
   }
   return counter
 }
-
-export const aa = () => {}

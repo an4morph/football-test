@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
 import {
   Button, Dialog, DialogActions, DialogContent, DialogTitle, List,
-  ListItem, ListItemText,
+  ListItem, ListItemText, CircularProgress,
 } from '@material-ui/core'
 import Command from './Command'
 
@@ -30,6 +30,7 @@ class Game extends React.Component {
   render() {
     const {
       games, order, stage, players,
+      playersAreLoading, playersAreFailed,
     } = this.props
 
     return (
@@ -58,10 +59,17 @@ class Game extends React.Component {
           <DialogContent>
             <List component="div">
               {
-                players && players.map(p => (
+                (players && !playersAreLoading && !playersAreFailed)
+                && players.map(p => (
                   <ListItem key={p.name}>
                     <ListItemText primary={p.name} />
                   </ListItem>))
+              }
+              {
+                playersAreLoading && <CircularProgress size={50} />
+              }
+              {
+                playersAreFailed && <div>failed to load</div>
               }
             </List>
           </DialogContent>
@@ -85,6 +93,8 @@ Game.propTypes = {
   stage: PropTypes.number.isRequired,
   order: PropTypes.number,
   getPlayers: PropTypes.func.isRequired,
+  playersAreLoading: PropTypes.bool,
+  playersAreFailed: PropTypes.bool,
 }
 
 export default Game
