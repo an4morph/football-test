@@ -1,15 +1,17 @@
 import axios from 'axios'
-import { generateUrl, checkResponseType } from './helpers'
+import { generateUrl } from './helpers'
 
-const getErrorMessage = (error) => {
+export const getErrorMessage = (error) => {
   let errMsg = error.message
   if (error.response) errMsg = error.response.data.message
   return errMsg
 }
 
+export const TIMER = Math.random() * 1000
+
 export const get = (dispatch, url, options) => {
   const {
-    params, success, loading, failed, responseType,
+    params, success, loading, failed,
   } = options
   const headers = {
     Accept: 'application/json, text/plain, */*',
@@ -23,15 +25,11 @@ export const get = (dispatch, url, options) => {
     url: generateUrl(url, params),
     headers,
   })
-    .then(({ data }) => checkResponseType(responseType, data))
-    .then((data) => {
-      dispatch(success(data))
+    .then(({ data }) => {
+      setTimeout(() => dispatch(success(data)), TIMER)
     })
     .catch((error) => {
       const errMsg = getErrorMessage(error)
       dispatch(failed(errMsg))
     })
-}
-export const post = (dispatch, url, options) => {
-  //
 }

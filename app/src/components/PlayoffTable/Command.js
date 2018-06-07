@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography'
 import CommandName from './CommandName'
 
 const Command = ({
-  games, order, stage, index, getPlayers,
+  games, order, stage, index, onClick,
 }) => {
   const findWinner = (game) => {
     if (game.commands[0].score > game.commands[1].score) { return game.commands[0].name }
@@ -29,7 +29,7 @@ const Command = ({
 
   const getCommandNameProps = (game) => {
     const props = {
-      getPlayers,
+      onClick,
       name: 'empty',
       className: 'empty',
       commandId: game ? game.commands[index].id : null,
@@ -69,7 +69,7 @@ Command.propTypes = {
   games: PropTypes.arrayOf(PropTypes.object),
   stage: PropTypes.number.isRequired,
   order: PropTypes.number,
-  getPlayers: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default Command

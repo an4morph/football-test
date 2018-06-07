@@ -17,7 +17,7 @@ class Stage extends React.Component {
 
   render() {
     const {
-      games, stage, children, getPlayers,
+      games, stage, children, getPlayers, players,
     } = this.props
     const pairCount = (2 ** (stage - 1)) / 2
 
@@ -44,6 +44,7 @@ class Stage extends React.Component {
               games={games}
               order={1}
               stage={stage}
+              players={players}
             />
           </div>
         }
@@ -54,6 +55,7 @@ class Stage extends React.Component {
 
 Stage.propTypes = {
   games: PropTypes.arrayOf(PropTypes.object),
+  players: PropTypes.arrayOf(PropTypes.object),
   stage: PropTypes.number.isRequired,
   children: PropTypes.node,
   getPlayers: PropTypes.func.isRequired,

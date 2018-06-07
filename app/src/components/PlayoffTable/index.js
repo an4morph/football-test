@@ -26,7 +26,9 @@ class PlayoffTable extends React.Component {
 
 
   render() {
-    const { games, stagesCount, getPlayers } = this.props
+    const {
+      games, stagesCount, getPlayers, players,
+    } = this.props
 
     return (
       <div className="playoff-table">
@@ -37,12 +39,14 @@ class PlayoffTable extends React.Component {
               games={games}
               stage={stage}
               getPlayers={getPlayers}
+              players={players}
             >
               <Pair>
                 <Game
                   games={games}
                   stage={stage}
                   getPlayers={getPlayers}
+                  players={players}
                 />
               </Pair>
             </Stage>
@@ -55,6 +59,7 @@ class PlayoffTable extends React.Component {
 
 PlayoffTable.propTypes = {
   games: PropTypes.arrayOf(PropTypes.object),
+  players: PropTypes.arrayOf(PropTypes.object),
   stagesCount: PropTypes.number.isRequired,
   getPlayers: PropTypes.func.isRequired,
   getGames: PropTypes.func.isRequired,
