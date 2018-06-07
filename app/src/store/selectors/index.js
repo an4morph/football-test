@@ -1,3 +1,4 @@
 import fromGames from './games'
+import fromPlayers from './players'
 
-export { fromGames }
+export { fromGames, fromPlayers }

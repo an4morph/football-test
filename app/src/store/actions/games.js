@@ -3,7 +3,7 @@ import {
   GET_GAMES_SUCCESS,
   GET_GAMES_LOADING,
   GET_GAMES_FAILED,
-} from './actionTypes'
+} from '../actionTypes'
 
 
 export function getGamesSuccess(data) {

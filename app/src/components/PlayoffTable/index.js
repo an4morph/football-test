@@ -1,12 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Stage from './Stage'
+import Pair from './Pair'
+import Game from './Game'
 import './playoff.scss'
 
 class PlayoffTable extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
+  }
+
+  componentDidMount() {
+    const { getGames } = this.props
+    getGames()
   }
 
   createCounter = (from, to) => {
@@ -19,7 +26,7 @@ class PlayoffTable extends React.Component {
 
 
   render() {
-    const { games, stagesCount } = this.props
+    const { games, stagesCount, getPlayers } = this.props
 
     return (
       <div className="playoff-table">
@@ -29,7 +36,16 @@ class PlayoffTable extends React.Component {
               key={stage}
               games={games}
               stage={stage}
-            />
+              getPlayers={getPlayers}
+            >
+              <Pair>
+                <Game
+                  games={games}
+                  stage={stage}
+                  getPlayers={getPlayers}
+                />
+              </Pair>
+            </Stage>
           ))
         }
       </div>
@@ -40,6 +56,8 @@ class PlayoffTable extends React.Component {
 PlayoffTable.propTypes = {
   games: PropTypes.arrayOf(PropTypes.object),
   stagesCount: PropTypes.number.isRequired,
+  getPlayers: PropTypes.func.isRequired,
+  getGames: PropTypes.func.isRequired,
 }
 
 export default PlayoffTable

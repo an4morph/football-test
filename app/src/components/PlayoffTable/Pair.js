@@ -1,51 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Game from './Game'
 
-class Pair extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
+import { createCounter } from '../helpers'
 
-  createCounter = (from, to) => {
-    const counter = []
-    for (let i = from; i <= to; i += 1) {
-      counter.push(i)
-    }
-    return counter
-  }
+const Pair = ({ pair, children }) => {
+  const childrenWithProps = props => React.Children.map(children, child =>
+    React.cloneElement(child, props))
 
-  render() {
-    const {
-      games, pair, stage,
-    } = this.props
-
-    return (
-      <div className="pair">
-        {
-          this.createCounter(1, 2).map((game) => {
-            const order = ((pair * 2) - 2) + game
-            return (
-              <Game
-                key={game}
-
-                games={games}
-                order={order}
-                stage={stage}
-              />
-            )
-          })
-        }
-      </div>
-    )
-  }
+  return (
+    <div className="pair">
+      {
+        createCounter(1, 2).map((game) => {
+          const order = ((pair * 2) - 2) + game
+          return childrenWithProps({ order, key: game })
+        })
+      }
+    </div>
+  )
 }
 
 Pair.propTypes = {
-  games: PropTypes.arrayOf(PropTypes.object),
-  stage: PropTypes.number.isRequired,
-  pair: PropTypes.number.isRequired,
+  pair: PropTypes.number,
+  children: PropTypes.node,
 }
 
 export default Pair

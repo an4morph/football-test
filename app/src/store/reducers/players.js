@@ -1,15 +1,15 @@
 import {
-  GET_GAMES_SUCCESS,
-  GET_GAMES_LOADING,
-  GET_GAMES_FAILED,
+  GET_PLAYERS_SUCCESS,
+  GET_PLAYERS_LOADING,
+  GET_PLAYERS_FAILED,
 } from '../actionTypes'
-import { fromGames } from '../selectors'
+import { fromPlayers } from '../selectors'
 
-const initialState = fromGames.getInitialState()
+const initialState = fromPlayers.getInitialState()
 
 const gameReducer = (state = initialState, action) => {
   switch (action.type) {
-  case GET_GAMES_SUCCESS:
+  case GET_PLAYERS_SUCCESS:
     return {
       ...state,
       list: action.list,
@@ -17,14 +17,14 @@ const gameReducer = (state = initialState, action) => {
       areFailed: false,
       listError: null,
     }
-  case GET_GAMES_LOADING:
+  case GET_PLAYERS_LOADING:
     return {
       ...state,
       areLoading: true,
       areFailed: false,
       listError: null,
     }
-  case GET_GAMES_FAILED:
+  case GET_PLAYERS_FAILED:
     return {
       ...state,
       areFailed: true,

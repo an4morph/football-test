@@ -11,18 +11,20 @@ class Game extends React.Component {
 
   render() {
     const {
-      games, order, stage,
+      games, order, stage, getPlayers,
     } = this.props
 
     return (
       <Paper className="game">
         <Command
+          getPlayers={getPlayers}
           index={0}
           games={games}
           stage={stage}
           order={order}
         />
         <Command
+          getPlayers={getPlayers}
           index={1}
           games={games}
           stage={stage}
@@ -36,7 +38,8 @@ class Game extends React.Component {
 Game.propTypes = {
   games: PropTypes.arrayOf(PropTypes.object),
   stage: PropTypes.number.isRequired,
-  order: PropTypes.number.isRequired,
+  order: PropTypes.number,
+  getPlayers: PropTypes.func.isRequired,
 }
 
 export default Game

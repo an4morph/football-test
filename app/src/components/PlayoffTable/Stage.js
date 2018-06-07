@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Paper from '@material-ui/core/Paper'
-import Pair from './Pair'
+import { Typography, Paper } from '@material-ui/core'
+
 import Game from './Game'
-import { Typography } from '@material-ui/core'
+import { createCounter } from '../helpers'
 
 const stageNames = [
   'Final', 'Semifinal', '1/4', '1/8', '1/16', '1/32',
@@ -15,17 +15,12 @@ class Stage extends React.Component {
     this.state = {}
   }
 
-  createCounter = (from, to) => {
-    const counter = []
-    for (let i = from; i <= to; i += 1) {
-      counter.push(i)
-    }
-    return counter
-  }
-
   render() {
-    const { games, stage } = this.props
+    const {
+      games, stage, children, getPlayers,
+    } = this.props
     const pairCount = (2 ** (stage - 1)) / 2
+
 
     return (
       <div className="stage">
@@ -35,20 +30,17 @@ class Stage extends React.Component {
           </Typography>
         </Paper>
         {
-          pairCount >= 1 && this.createCounter(1, pairCount).map(pair => (
-            <Pair
-              key={pair}
-
-              games={games}
-              pair={pair}
-              stage={stage}
-            />
-          ))
+          pairCount >= 1 && createCounter(1, pairCount).map((pair) => {
+            const childrenWithProps = React.Children.map(children, child =>
+              React.cloneElement(child, { pair, key: pair }))
+            return childrenWithProps
+          })
         }
         {
           pairCount < 1 &&
           <div className="final-game">
             <Game
+              getPlayers={getPlayers}
               games={games}
               order={1}
               stage={stage}
@@ -63,6 +55,8 @@ class Stage extends React.Component {
 Stage.propTypes = {
   games: PropTypes.arrayOf(PropTypes.object),
   stage: PropTypes.number.isRequired,
+  children: PropTypes.node,
+  getPlayers: PropTypes.func.isRequired,
 }
 
 export default Stage
